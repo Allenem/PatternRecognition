@@ -29,7 +29,7 @@ def Batch_perceptron(Wm_Y, Wn_Y):
                 Errs.append(Y[i])
         a += learnrate * np.array([np.array(Errs).sum(axis=0)]).T
         k += 1
-        if k > 10000:
+        if k > 100000:
             print('Batch_perceptron 算法不能拟合{}&{}的分界面'.format(Wm_Y, Wn_Y))
             return a.flatten()
     print('Batch_perceptron algorithm：\na = {}\nIterations required for convergence is {}'.format(
@@ -77,8 +77,8 @@ def MSE():
     for i in range(len(label_test)):
         for j in range(len(label_test[0])):
             label_test[i, j] = int(int(j / 2) == i)
-    a = np.linalg.pinv(Y_train.T).dot(
-        label_train.T).T  # 广义逆矩阵 3*32, 3*32*32*4.T = 4*3
+    # 权向量(4*3) = (训练样本的伪逆(3*32) * 标签集(32*4)) 的转置
+    a = np.linalg.pinv(Y_train.T).dot(label_train.T).T
     target = np.arange(1, 5).dot(label_test)  # [11223344]
     output = np.argmax(a.dot(Y_test), axis=0) + np.ones(8)  # 4*8->1*8
     accuracy = sum(output == target) / len(target)
