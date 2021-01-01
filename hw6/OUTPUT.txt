@@ -1,0 +1,63 @@
+magic_number: 2051, image_number: 60000, image_size: 28*28
+Number of parsed images: 60000
+magic_number: 2049, image_number: 60000
+Number of parsed labels: 60000
+magic_number: 2051, image_number: 10000, image_size: 28*28
+Number of parsed images: 10000
+magic_number: 2049, image_number: 10000
+Number of parsed labels: 10000
+(60000, 28, 28)
+Train images number: 11881
+Test images number: 2012
+
+C = 0.001000, gamma = 0.012500
+The accuracy of trainset is 0.972309
+the accuracy of testset is 0.975149
+C = 0.001000, gamma = 0.001250
+The accuracy of trainset is 0.909519
+the accuracy of testset is 0.902087
+C = 0.001000, gamma = 0.000001
+The accuracy of trainset is 0.876526
+the accuracy of testset is 0.871272
+C = 0.001000, gamma = 0.000000
+The accuracy of trainset is 0.907920
+the accuracy of testset is 0.903579
+
+C = 0.100000, gamma = 0.012500
+The accuracy of trainset is 0.987122
+the accuracy of testset is 0.985586
+C = 0.100000, gamma = 0.001250
+The accuracy of trainset is 0.928205
+the accuracy of testset is 0.927435
+C = 0.100000, gamma = 0.000001
+The accuracy of trainset is 0.876526
+the accuracy of testset is 0.871272
+C = 0.100000, gamma = 0.000000
+The accuracy of trainset is 0.965154
+the accuracy of testset is 0.970676
+
+C = 1.000000, gamma = 0.012500
+The accuracy of trainset is 0.999663
+the accuracy of testset is 0.996024
+C = 1.000000, gamma = 0.001250
+The accuracy of trainset is 0.928373
+the accuracy of testset is 0.927932
+C = 1.000000, gamma = 0.000001
+The accuracy of trainset is 0.876526
+the accuracy of testset is 0.871272
+C = 1.000000, gamma = 0.000000
+The accuracy of trainset is 0.938389
+the accuracy of testset is 0.939364
+
+C = 1000000.000000, gamma = 0.012500
+The accuracy of trainset is 1.000000
+the accuracy of testset is 0.994036
+C = 1000000.000000, gamma = 0.001250
+The accuracy of trainset is 0.964986
+the accuracy of testset is 0.962227
+C = 1000000.000000, gamma = 0.000001
+The accuracy of trainset is 0.945964
+the accuracy of testset is 0.947316
+C = 1000000.000000, gamma = 0.000000
+The accuracy of trainset is 0.938389
+the accuracy of testset is 0.939364

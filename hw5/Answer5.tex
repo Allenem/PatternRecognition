@@ -147,7 +147,7 @@ plot(x5(:,1), x5(:,2), 'm.');
                         2d)更新训练数据集的权重分布：$D_{m+1}=\left\{w_{m+1,1},w_{m+1,2},...,w_{m+1,n}\right\}$\\
                         $$
                               \begin{aligned}
-                                    w_{m+1,i}       & =\frac{w_mi}{Z_m}×exp\left(-\alpha y_iG_m\left(X_i\right)\right)         \\
+                                    w_{m+1,i}       & =\frac{w_{mi}}{Z_m}×exp\left(-\alpha y_iG_m\left(X_i\right)\right)       \\
                                     Where \quad Z_m & =\sum\limits_{i=1}^nw_{mi}exp\left(-\alpha y_iG_m\left(X_i\right)\right)
                               \end{aligned}
                         $$
@@ -157,6 +157,19 @@ plot(x5(:,1), x5(:,2), 'm.');
       \item
             \begin{enumerate}[(1)]
                   \item K-Means聚类算法的\textbf{原理}\\
+                        假设每个样本以概率为1属于某个类，则\\
+                        $$
+                              \begin{aligned}
+                                    P\left(\omega_i|x_k,\hat{\mu}\right) & =\left\{\begin{array}{ll}
+                                          1, & x_k \in \omega_i;   \\
+                                          0, & x_k \notin \omega_i
+                                    \end{array}
+                                    \right.                                                                                                                                  \\
+                                    \hat{P}\left(\omega_i\right)         & = n_i/n                                                                                           \\
+                                    \hat{\mu}_i                          & =\frac{1}{n_i}\sum\limits_{k=1}^{n_i}x_k^i                                                        \\
+                                    \hat{\Sigma}_i                       & =\frac{1}{n_i}\sum\limits_{k=1}^{n_i}\left(x_k^i-\hat{mu}_i\right)\left(x_k^i-\hat{mu}_i\right)^T
+                              \end{aligned}
+                        $$
                         K-Means聚类算法是一种基于距离的聚类算法，即先随机给出类中心，通过不断计算距离归类和重新计算类中心的迭代最终确定趋于正确的类中心。
                   \item K-Means聚类算法的计算步骤\\
                         先引入两个假设：\\
@@ -193,7 +206,7 @@ plot(x5(:,1), x5(:,2), 'm.');
                         \quad • Ng's Algorithm: $\mathbb{L}_{sym}\vec{u} =  \lambda \vec{u}$\\
                         – 由这些特征向量构成样本点的新特征(Ng的特征向量需要归一化)，大小n×k，采用K-means等聚类方法完成最后的聚类。
                   \item \textbf{影响因素}\\
-                        图拉普拉斯构造方法的不同导致特征向量不同。
+                        相似度的计算方法，拉普拉斯矩阵、特征向量的归一化方法，局部链接数目，聚类数目和方法，等等。
             \end{enumerate}
 \end{enumerate}
 
@@ -201,6 +214,11 @@ plot(x5(:,1), x5(:,2), 'm.');
 
 \begin{enumerate}
       \item
+
+            代码见如下文件：
+            \href{https://github.com/Allenem/PatternRecognition/blob/main/hw5/PR_hw5_1.m}{MATLAB文件1主程序}，
+            \href{https://github.com/Allenem/PatternRecognition/blob/main/hw5/K_Means.m}{MATLAB文件2KMeans函数}，
+            \href{https://github.com/Allenem/PatternRecognition/blob/main/hw5/hw_5_kmeans.py}{Kmeans的Python实现}。
             效果图如下，十字是最初算得的类中心，颜色与类别有差异；圆圈是重排序之后的类中心，颜色与类别无差异。
             由实验结果可知，初始化的均值会影响最终的类中心收敛，下面的第一幅图显然收敛到了两类的中间，而第二幅图由于初始的均值设置合理聚类准确度较高。
             说明一定的先验知识对聚类很有帮助：\\
@@ -216,32 +234,17 @@ plot(x5(:,1), x5(:,2), 'm.');
                   \caption{ 聚类准确率99.5\%，均方误差0.0121图像 }
                   \label{img3}
             \end{figure}
-            代码见如下文件\\
-            \href{https://github.com/Allenem/PatternRecognition/blob/main/hw5/PR_hw5_1.m}{MATLAB文件1主程序}\\
-            \href{https://github.com/Allenem/PatternRecognition/blob/main/hw5/K_Means.m}{MATLAB文件2KMeans函数}
+
       \item
-            暂时效果图这样：\\
+            代码见如下文件:
+            \href{https://github.com/Allenem/PatternRecognition/blob/main/hw5/hw5_spectral_cluster.py}{Ng算法谱聚类的Python实现}。
+            效果图，准确度随着$\sigma$和$k$变化的曲线如下：\\
             \begin{figure}[H]
                   \centering
                   \includegraphics[width=.8\textwidth]{hw5_4.png}
                   \caption{ Ng算法谱分类效果图 }
                   \label{img4}
             \end{figure}
-            准确度随着$\sigma$和$k$变化的曲线\sout{如下图所示}，还没做：\\
-            % \begin{figure}[H]
-            %       \centering
-            %       \includegraphics[width=.8\textwidth]{hw5_5.png}
-            %       \caption{ 准确度随着$\sigma$变化的曲线 }
-            %       \label{img5}
-            % \end{figure}
-            % \begin{figure}[H]
-            %       \centering
-            %       \includegraphics[width=.8\textwidth]{hw5_6.png}
-            %       \caption{ 准确度随着$k$变化的曲线 }
-            %       \label{img6}
-            % \end{figure}
-            代码见如下文件\\
-            \href{https://github.com/Allenem/PatternRecognition/blob/main/hw5/PR_hw5_2.m}{MATLAB文件3Ng算法谱聚类}
 \end{enumerate}
 
 \end{document}
