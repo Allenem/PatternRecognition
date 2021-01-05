@@ -114,12 +114,15 @@ if __name__ == '__main__':
     print('Train images number: {}\nTest images number: {}'.format(
         len(train_labels), len(test_labels)))
 
-    # # 2.Verify label & image
-    # for i in range(10):
-    #     print(train_labels[5918+i])
-    #     plt.imshow(train_images_temp1[5918+i], cmap='gray')
-    #     plt.show()
-    # print('done')
+    # 2.Verify label & image
+    for i in range(10):
+        print(train_labels[5918 + i])
+        plt.subplot(2, 5, i+1)
+        plt.imshow(train_images_temp1[5918+i], cmap='gray')
+        plt.xticks([])
+        plt.yticks([])
+    plt.show()
+    print('done')
 
     # 3.SVM with different c & gamma
     Cs = [0.001, 0.1, 1, 1e6]
