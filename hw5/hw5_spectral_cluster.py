@@ -21,7 +21,7 @@ def generate_graph(data, k, sigma):
         k: number of neighbor
         sigma: parameter of weight in samilarity matrix
     Return:
-        W: degree Matrix
+        W: Affinity Matrix
     """
     m, n = data.shape
     dist = np.zeros((m, m), dtype=np.float64)
@@ -45,7 +45,7 @@ def generate_graph(data, k, sigma):
 def Ng_algorithm(W, c):
     """
     Parameter:
-        W: degree Matrix
+        W: Affinity Matrix
         c: number of classes
     Return:
         label: every data's label like [0,1,1,..,0,1] (n*1)

@@ -431,7 +431,7 @@ def Ng_algorithm(W, c):
 
 准确度对比：
 
-![hw6_verify](./hw6/hw6.png)
+![hw6](./hw6/hw6.png)
 
 <details>
 <summary>输出如下：</summary>
@@ -504,3 +504,7 @@ the accuracy of testset is 0.939364
 </details>
 
 其实SVM部分代码并不多，只是加载 `idx3-ubyte` 和 `idx1-ubyte` 数据代码稍复杂。由图可知：C 过小，欠拟合，准确度较小；C 过大，过拟合，Test 和 Train 的准确率相差会变大。gamma 过小准确度较小，gamma 越大准确度相对变大。
+
+后来画了热力图感觉挺好看的，分析也很直观：
+
+![hw6_hotmap.png](./hw6/hw6_hotmap.png)

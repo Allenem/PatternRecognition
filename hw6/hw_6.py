@@ -125,8 +125,12 @@ if __name__ == '__main__':
     print('done')
 
     # 3.SVM with different c & gamma
-    Cs = [0.001, 0.1, 1, 1e6]
-    gammas = [1/80, 1/800, 1/800000, 0]
+    # Cs = [0.001, 0.1, 1, 1e6]
+    # gammas = [0, 1 / 800000, 1 / 800, 1 / 80]
+    Cs = [0.001, 0.01, 0.1, 1, 10, 100, 1e3, 1e4, 1e5, 1e6]
+    gammas = [0, 1 / 800000, 1 / 80000, 1 /
+              8000, 1 / 800, 1 / 80, 1 / 8, 1, 10, 100]
+    Accs = []
     for C in Cs:
         Acc1 = []
         Acc2 = []
@@ -148,7 +152,9 @@ if __name__ == '__main__':
             print('the accuracy of testset is %f' % result2)
             Acc1.append(round(result1, 4))
             Acc2.append(round(result2, 4))
-        # 3.4.plot Acc-Gammas with different C
+            Accs.append(round(result2, 4))
+        # 3.4.plot Acc-Gammas with different C, plot a figure each C
+        '''
         # plt.semilogx(gammas, Acc1)
         plt.plot(gammas, Acc1)
         for a, b in zip(gammas, Acc1):
@@ -162,3 +168,24 @@ if __name__ == '__main__':
         plt.xlabel("gamma")
         plt.ylabel("acc")
         plt.show()
+        '''
+    # 3.5.plot Acc-Gammas-C hotmap
+    print(Accs)
+    Accs = np.array(Accs).reshape(len(Cs), len(gammas))
+
+    fig, ax = plt.subplots()
+    im = ax.imshow(Accs)
+    ax.set_xticks(np.arange(len(gammas)))
+    ax.set_yticks(np.arange(len(Cs)))
+    ax.set_xticklabels(gammas)
+    ax.set_yticklabels(Cs)
+    for i in range(len(Cs)):
+        for j in range(len(gammas)):
+            text = ax.text(j, i, Accs[i, j],
+                           ha="center", va="center", color="w")
+    ax.set_title("Acc-Gamma-C")
+    ax.set_xlabel('gamma')
+    ax.set_ylabel('C')
+    fig.tight_layout()
+    plt.colorbar(im)
+    plt.show()
